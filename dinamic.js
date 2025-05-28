@@ -1,12 +1,17 @@
 let todoDataSet = []
 
+retrieveTasksFromLocalStorage();
+
 $(document).ready(function() {
   console.log("DOM is ready!");
   
+  updateList();
+
   $("button#add-task-btn").on("click", () => {
     const newTask = getData();
     if(newTask && newTask.Task) {
       todoDataSet.push(newTask);
+      updateLocalStorage();
       updateList();
     } else {
         console.log("Task input was cancelled or empty.");
@@ -19,7 +24,8 @@ $(document).ready(function() {
     const taskId = $listItem.data("id"); // Retrieve the data-id attribute
     if (taskId !== undefined && todoDataSet[taskId]) {
       todoDataSet.splice(taskId,1)
-      updateList()
+      updateLocalStorage();
+      updateList();
     }
   })
 
@@ -30,6 +36,7 @@ $(document).ready(function() {
     if (taskId !== undefined && todoDataSet[taskId]) {
       // Toggle the 'Completed' status in the dataset
       todoDataSet[taskId].Completed = $(this).prop("checked");
+      updateLocalStorage();
       // Add/remove 'completed' class on the list item for styling
       $listItem.toggleClass("completed", todoDataSet[taskId].Completed);
       console.log(`Task '${todoDataSet[taskId].Task}' completion status changed to: ${todoDataSet[taskId].Completed}`);
@@ -67,6 +74,7 @@ $(document).ready(function() {
           const newText = $(this).val().trim();
           if (newText && newText !== currentTaskText) { // Only update if text changed and not empty
             todoDataSet[taskId].Task = newText; // Update the data
+            updateLocalStorage();
             updateList(); // Re-render the list
           } else if (newText === "") {
             // Optional: Alert user if they tried to save an empty task
@@ -153,4 +161,22 @@ function getData() {
     return null;
   }
   return {Task: task.trim(), Date: getFormattedCurrentDate(), Completed: false}
+}
+
+// ============ Dealing with LocalStorage ============
+
+function updateLocalStorage() {
+  const todoDataSetStr = JSON.stringify(todoDataSet);
+  localStorage.setItem("tasks", todoDataSetStr);
+}
+
+function retrieveTasksFromLocalStorage() {
+  try {
+    const tasksStr = localStorage.getItem("tasks");
+    const tasks = tasksStr ? JSON.parse(tasksStr) : null;
+    todoDataSet = tasks ?? [];
+  } catch (error) {
+    console.error("Error parsing tasks from localStorage:", error);
+    todoDataSet = [];
+  }
 }
