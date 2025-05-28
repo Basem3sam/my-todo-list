@@ -34,8 +34,54 @@ $(document).ready(function() {
       $listItem.toggleClass("completed", todoDataSet[taskId].Completed);
       console.log(`Task '${todoDataSet[taskId].Task}' completion status changed to: ${todoDataSet[taskId].Completed}`);
     }
-  })
-})
+  });
+
+    $("ul#task-list").on("dblclick", "label.task-label", function() {
+    const $label = $(this);
+    const $listItem = $label.closest(".task-item");
+    const taskId = $listItem.data("id");
+
+    if (taskId !== undefined && taskId >= 0 && taskId < todoDataSet.length) {
+      const currentTaskText = todoDataSet[taskId].Task;
+
+      // Replace label with an input field
+      const $editInput = $("<input>")
+        .attr({
+          type: "text",
+          class: "edit-task-input", // Apply a class for styling if needed
+          value: currentTaskText
+        })
+        .css({ // Basic inline styling for input to look good quickly
+          'flex-grow': '1',
+          'padding': '5px',
+          'border': '1px solid #ccc',
+          'border-radius': '4px',
+          'font-size': '1.1em'
+        })
+        .on("keypress", function(e) {
+          if (e.which === 13) { // Check for Enter key
+            $(this).blur(); // Trigger blur to save changes
+          }
+        })
+        .on("blur", function() { // Save changes when input loses focus
+          const newText = $(this).val().trim();
+          if (newText && newText !== currentTaskText) { // Only update if text changed and not empty
+            todoDataSet[taskId].Task = newText; // Update the data
+            updateList(); // Re-render the list
+          } else if (newText === "") {
+            // Optional: Alert user if they tried to save an empty task
+            alert("Task description cannot be empty. Reverting to original.");
+            updateList(); // Revert by re-rendering
+          } else {
+            updateList(); // Revert to original text if no change or user cancelled
+          }
+        });
+
+      $label.replaceWith($editInput); // Swap the label with the input
+      $editInput.focus(); // Focus the input for immediate typing
+    }
+  });
+});
 
 function updateList() {
   const $taskList = $("ul#task-list");
