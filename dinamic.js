@@ -58,13 +58,6 @@ $(document).ready(function() {
           class: "edit-task-input", // Apply a class for styling if needed
           value: currentTaskText
         })
-        .css({ // Basic inline styling for input to look good quickly
-          'flex-grow': '1',
-          'padding': '5px',
-          'border': '1px solid #ccc',
-          'border-radius': '4px',
-          'font-size': '1.1em'
-        })
         .on("keypress", function(e) {
           if (e.which === 13) { // Check for Enter key
             $(this).blur(); // Trigger blur to save changes
