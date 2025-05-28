@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome To-Do List</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="container">
+        <main id="to-do">
+            <header id="to-do-head">
+                <h1 role="heading" aria-level="1">مهامي</h1> <button id="add-task-btn" aria-label="Add new task" title="Add new task">
+                    +
+                </button>
+            </header>
+
+            <section id="to-do-body" aria-labelledby="to-do-head">
+                <ul id="task-list" role="list">
+                    <p class="empty-list-message">Your to-do list is empty! Click '+' to add a new task.</p>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" 
+            integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" 
+            crossorigin="anonymous"></script>
+          
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/4.1.0/cdn.min.js"></script>
+
+    <script src="dinamic.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+/* Import Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Universal Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base HTML and Body Styles */
+html, body {
+  font-family: 'Inter', sans-serif; /* Using the imported Inter font */
+  font-size: 24px; /* Base font size */
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Container for centering the To-Do app */
+div#container {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #2c3e50; 
+  padding: 20px;
+}
+
+/* Main To-Do Application Box */
+main#to-do {
+  background-color: #ffffff; 
+  margin-top: 5vh; /* Spacing from the top of the viewport */
+  width: 90%; /* Responsive width for smaller screens */
+  max-width: 500px; /* Maximum width on larger screens */
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  overflow: hidden; /* Ensures content respects border-radius */
+}
+
+/* To-Do Header Section */
+header#to-do-head {
+  background-color: #3498db;
+  padding: 20px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  position: relative;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  /* Prevent Text Selection in Header */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* To-Do Header Title (h1) */
+header#to-do-head h1 {
+  font-size: 32px;
+  margin: 0; /* Remove default h1 margin */
+}
+
+/* Add Task Button (the plus sign) */
+button#add-task-btn { 
+  color: #3498db; /* (matches header background) */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  position: absolute;
+  right: 25px;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: none; /* Remove default button border */
+  outline: none; /* Remove outline on focus */
+  font-size: 32px;
+  font-weight: bold;
+  /* Smooth Transition for Scaling and Shadow */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  /* Prevent Text Selection on Plus Sign */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+button#add-task-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* To-Do Body Section */
+section#to-do-body {
+  padding: 20px;
+}
+
+/* Task List */
+ul#task-list {
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default ul padding */
+  margin: 0; /* Remove default ul margin */
+}
+
+/* Empty List Message */
+.empty-list-message {
+  text-align: center;
+  color: #888;
+  font-size: 0.9em; /* Slightly smaller than base font */
+  margin-top: 20px;
+  padding-bottom: 20px; /* Ensure some space at the bottom */
+}
+
+/* Styles for individual task items (will be dynamically added) */
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee; /* Separator between tasks */
+}
+
+.task-item:last-child {
+  border-bottom: none; /* No border for the last item */
+}
+
+.task-checkbox {
+  margin-right: 15px;
+  appearance: none; /* Hide default checkbox */
+  width: 25px;
+  height: 25px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.task-checkbox:checked {
+  background-color: #3498db; /* Blue when checked */
+  border-color: #3498db;
+}
+
+.task-checkbox:checked::after {
+  content: '✓'; /* Checkmark symbol */
+  font-size: 18px;
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.task-label {
+  flex-grow: 1; /* Allows label to take available space */
+  font-size: 1.1em;
+  color: #555;
+  cursor: pointer;
+}
+
+.task-checkbox:checked + .task-label {
+  text-decoration: line-through; /* Strikethrough when checked */
+  color: #aaa; /* Lighter color when checked */
+}
+
+.delete-task-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 5px;
+  transition: color 0.2s ease-in-out;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.delete-task-btn:hover {
+  color: #c0392b; /* Darker red on hover */
+}
