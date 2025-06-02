@@ -92,7 +92,7 @@ This project is open source and available under the [MIT License](LICENSE).
 Feel free to connect or reach out!
 
 * **GitHub:** [basem3sam](https://github.com/basem3sam)
-* **LinkedIn:** [Basem Esam](https://www.linkedin.com/in/BasemEsam/) *(Please verify this link)*
+* **LinkedIn:** [Basem Esam](https://www.linkedin.com/in/BasemEsam/)
 * **Email:** [basem.esam.omar@gmail.com](mailto:basem.esam.omar@gmail.com)
 
 ---
