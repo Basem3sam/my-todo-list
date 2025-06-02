@@ -93,6 +93,6 @@ Feel free to connect or reach out!
 
 * **GitHub:** [basem3sam](https://github.com/basem3sam)
 * **LinkedIn:** [Basem Esam](https://www.linkedin.com/in/BasemEsam/) *(Please verify this link)*
-* **Email:** [basem.esam.omar@gmail.com](mailto:basem.esam.omar@gmail.com) *(Please verify this email)*
+* **Email:** [basem.esam.omar@gmail.com](mailto:basem.esam.omar@gmail.com)
 
 ---
