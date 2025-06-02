@@ -83,8 +83,7 @@ Contributions are always welcome! If you have suggestions for improvements, find
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE.md).
-*(Ensure you have a `LICENSE.md` file in your repository with the MIT License text.)*
+This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
